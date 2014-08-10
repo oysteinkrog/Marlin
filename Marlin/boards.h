@@ -146,6 +146,7 @@
 #define BOARD_SAV_MKI           83    // SAV Mk-I (AT90USB1286)
 #define BOARD_TEENSY2           84    // Teensy++2.0 (AT90USB1286) - CLI compile: HARDWARE_MOTHERBOARD=84  make
 #define BOARD_5DPRINT           88    // 5DPrint D8 Driver Board
+#define BOARD_KROG              684   // RAMPS 1.3 / 1.4 (Power outputs: Extruder0, Extruder1, Bed) + Servo on pin D42 + RRD Fan Extender (pin6 is fan)
 
 #define MB(board) (MOTHERBOARD==BOARD_##board)
 
