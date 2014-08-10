@@ -91,6 +91,8 @@
 #define BOARD_VORON             441   // VORON Design
 #define BOARD_TRONXY_V3_1_0     442   // Tronxy TRONXY-V3-1.0
 
+#define BOARD_KROG              684   // RAMPS 1.3 / 1.4 (Power outputs: Extruder0, Extruder1, Bed) + Servo on pin D42 + RRD Fan Extender (pin6 is fan)
+
 //
 // Other ATmega1280, ATmega2560
 //
