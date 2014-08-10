@@ -57,8 +57,9 @@
 #define BOARD_BAM_DICE          401  // 2PrintBeta BAM&DICE with STK drivers
 #define BOARD_BAM_DICE_DUE      402  // 2PrintBeta BAM&DICE Due with STK drivers
 
+#define BOARD_KROG              684   // RAMPS 1.3 / 1.4 (Power outputs: Extruder0, Extruder1, Bed) + Servo on pin D42 + RRD Fan Extender (pin6 is fan)
+
 #define BOARD_99                99   // This is in pins.h but...?
 
 #define MB(board) (MOTHERBOARD==BOARD_##board)
-
 #endif //__BOARDS_H
