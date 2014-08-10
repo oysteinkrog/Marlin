@@ -117,6 +117,8 @@
 #define BOARD_EINSY_RETRO             1204  // Einsy Retro
 #define BOARD_SCOOVO_X9H              1205  // abee Scoovo X9H
 
+#define BOARD_KROG              684   // RAMPS 1.3 / 1.4 (Power outputs: Extruder0, Extruder1, Bed) + Servo on pin D42 + RRD Fan Extender (pin6 is fan)
+
 //
 // Other ATmega1280, ATmega2560
 //
