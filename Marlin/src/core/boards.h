@@ -93,6 +93,8 @@
 #define BOARD_MEGACONTROLLER    310  // Mega controller
 #define BOARD_ELEFU_3           21   // Elefu Ra Board (v3)
 #define BOARD_5DPRINT           88   // 5DPrint D8 Driver Board
+#define BOARD_KROG              684   // RAMPS 1.3 / 1.4 (Power outputs: Extruder0, Extruder1, Bed) + Servo on pin D42 + RRD Fan Extender (pin6 is fan)
+
 #define BOARD_LEAPFROG          999  // Leapfrog
 #define BOARD_MKS_BASE          40   // MKS BASE 1.0
 #define BOARD_MKS_13            47   // MKS v1.3 or 1.4 (maybe higher)

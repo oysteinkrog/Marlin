@@ -65,6 +65,8 @@
   #include "pins_RAMPS_13.h"
 #elif MB(RAMPS_13_SF)
   #include "pins_RAMPS_13.h"
+#elif MB(KROG)
+  #include "pins_KROG.h"
 #elif MB(RAMPS_14_EFB)
   #include "pins_RAMPS.h"
 #elif MB(RAMPS_14_EEB)
