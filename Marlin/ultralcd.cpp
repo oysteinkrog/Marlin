@@ -614,7 +614,7 @@ static void lcd_prepare_menu() {
     MENU_ITEM(function, MSG_AUTOSTART, lcd_autostart_sd);
   #endif
   MENU_ITEM(gcode, MSG_DISABLE_STEPPERS, PSTR("M84"));
-  MENU_ITEM(gcode, MSG_AUTO_HOME, PSTR("G28"));
+  MENU_ITEM(gcode, MSG_AUTO_HOME, PSTR("G28 X Y"));
   MENU_ITEM(function, MSG_SET_HOME_OFFSETS, lcd_set_home_offsets);
   //MENU_ITEM(gcode, MSG_SET_ORIGIN, PSTR("G92 X0 Y0 Z0"));
   #if TEMP_SENSOR_0 != 0
@@ -649,7 +649,7 @@ static void lcd_delta_calibrate_menu()
 {
     START_MENU();
     MENU_ITEM(back, MSG_MAIN, lcd_main_menu);
-    MENU_ITEM(gcode, MSG_AUTO_HOME, PSTR("G28"));
+    MENU_ITEM(gcode, MSG_AUTO_HOME, PSTR("G28 X Y"));
     MENU_ITEM(gcode, MSG_DELTA_CALIBRATE_X, PSTR("G0 F8000 X-77.94 Y-45 Z0"));
     MENU_ITEM(gcode, MSG_DELTA_CALIBRATE_Y, PSTR("G0 F8000 X77.94 Y-45 Z0"));
     MENU_ITEM(gcode, MSG_DELTA_CALIBRATE_Z, PSTR("G0 F8000 X0 Y90 Z0"));
@@ -1128,7 +1128,7 @@ menu_edit_type(unsigned long, long5, ftostr5, 0.01)
     lcd_move_y();
   }
   static void reprapworld_keypad_move_home() {
-    enquecommands_P((PSTR("G28"))); // move all axis home
+    enquecommands_P((PSTR("G28 X Y"))); // move all axis home
   }
 #endif //REPRAPWORLD_KEYPAD
 
@@ -1797,7 +1797,7 @@ static void _lcd_level_bed()
         current_position[Z_AXIS] = MESH_HOME_SEARCH_Z;
         plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS], current_position[E_AXIS], manual_feedrate[X_AXIS]/60, active_extruder);
         mbl.active = 1;
-        enquecommands_P(PSTR("G28"));
+        enquecommands_P(PSTR("G28 X Y"));
         lcd_return_to_status();
       } else {
         current_position[Z_AXIS] = MESH_HOME_SEARCH_Z;
@@ -1837,7 +1837,7 @@ static void lcd_level_bed()
   axis_known_position[Y_AXIS] = false;
   axis_known_position[Z_AXIS] = false;
   mbl.reset();
-  enquecommands_P(PSTR("G28"));
+  enquecommands_P(PSTR("G28 X Y"));
   lcd_goto_menu(_lcd_level_bed_homing);
 }
 #endif  // MANUAL_BED_LEVELING
