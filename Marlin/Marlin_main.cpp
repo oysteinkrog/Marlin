@@ -3521,7 +3521,7 @@ inline void gcode_M42() {
 
     if (pin_number > -1) {
       pinMode(pin_number, OUTPUT);
-      digitalWrite(pin_number, pin_status);
+      //digitalWrite(pin_number, pin_status);
       analogWrite(pin_number, pin_status);
     }
   } // code_seen('S')
