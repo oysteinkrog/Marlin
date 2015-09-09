@@ -377,7 +377,6 @@
 //#define ADVANCE
 
 #if ENABLED(ADVANCE)
-#ifdef ADVANCE
   #define EXTRUDER_ADVANCE_K .03
   #define D_FILAMENT 1.7
   //#define STEPS_MM_E 836
@@ -434,6 +433,7 @@ const unsigned int dropsegments=5; //everything with less than this number of st
 // until then, intended retractions can be detected by moves that only extrude and the direction.
 // the moves are than replaced by the firmware controlled ones.
 
+#define FWRETRACT
 #if ENABLED(FWRETRACT)
   #define MIN_RETRACT 0.1                //minimum extruded mm to accept a automatic gcode retraction attempt
   #define RETRACT_LENGTH 0.5               //default retract length (positive mm)
@@ -447,7 +447,7 @@ const unsigned int dropsegments=5; //everything with less than this number of st
 
 // Add support for experimental filament exchange support M600; requires display
 #if ENABLED(ULTIPANEL)
-  //#define FILAMENTCHANGEENABLE
+  #define FILAMENTCHANGEENABLE
   #if ENABLED(FILAMENTCHANGEENABLE)
     #define FILAMENTCHANGE_XPOS 3
     #define FILAMENTCHANGE_YPOS 3
