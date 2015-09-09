@@ -845,7 +845,7 @@ const float DEFAULT_E_STEPS_PER_UNIT = ((MOTOR_STEPS_PER_REV_AXIS_E * DRIVER_MIC
 // affecting heaters, and the fan if FAN_SOFT_PWM is enabled.
 // However, control resolution will be halved for each increment;
 // at zero value, there are 128 effective control positions.
-#define SOFT_PWM_SCALE 0
+//#define SOFT_PWM_SCALE 0
 
 // Temperature status LEDs that display the hotend and bet temperature.
 // If all hotends and bed temperature and temperature setpoint are < 54C then the BLUE led is on.
