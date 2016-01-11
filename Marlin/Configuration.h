@@ -241,10 +241,11 @@ Here are some standard links for getting your machine calibrated:
 
 // Found using autotune: M303 E0 S190 C10
 // With E3D V6, both fans on, insulation on heater block
-// 2015-05-25
-    #define  DEFAULT_Kp 22.56
-    #define  DEFAULT_Ki 2.16
-    #define  DEFAULT_Kd 58.76
+// 2016-01-08
+    #define  DEFAULT_Kp 37.14
+    #define  DEFAULT_Ki 4.91
+    #define  DEFAULT_Kd 70.20
+
 #endif // PIDTEMP
 
 //===========================================================================
