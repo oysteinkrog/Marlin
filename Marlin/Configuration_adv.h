@@ -196,12 +196,12 @@
 // When first starting the main fan, run it at full speed for the
 // given number of milliseconds.  This gets the fan spinning reliably
 // before setting a PWM value. (Does not work with software PWM for fan on Sanguinololu)
-//#define FAN_KICKSTART_TIME 100
+#define FAN_KICKSTART_TIME 100
 
 // This defines the minimal speed for the main fan, run in PWM mode
 // to enable uncomment and set minimal PWM speed for reliable running (1-255)
 // if fan speed is [1 - (FAN_MIN_PWM-1)] it is set to FAN_MIN_PWM
-//#define FAN_MIN_PWM 50
+#define FAN_MIN_PWM 50
 
 // @section extruder
 
@@ -210,12 +210,12 @@
 // extruder temperature is above/below EXTRUDER_AUTO_FAN_TEMPERATURE.
 // Multiple extruders can be assigned to the same pin in which case
 // the fan will turn on when any selected extruder is above the threshold.
-#define EXTRUDER_0_AUTO_FAN_PIN -1
-#define EXTRUDER_1_AUTO_FAN_PIN -1
-#define EXTRUDER_2_AUTO_FAN_PIN -1
-#define EXTRUDER_3_AUTO_FAN_PIN -1
-#define EXTRUDER_AUTO_FAN_TEMPERATURE 50
-#define EXTRUDER_AUTO_FAN_SPEED   255  // == full speed
+#define EXTRUDER_0_AUTO_FAN_PIN   5
+#define EXTRUDER_1_AUTO_FAN_PIN   5
+#define EXTRUDER_2_AUTO_FAN_PIN   5
+#define EXTRUDER_3_AUTO_FAN_PIN   5
+#define EXTRUDER_AUTO_FAN_TEMPERATURE 35
+#define EXTRUDER_AUTO_FAN_SPEED   255  // 255 == full speed
 
 //===========================================================================
 //============================ Mechanical Settings ==========================
@@ -283,8 +283,8 @@
   // Configuration for second X-carriage
   // Note: the first x-carriage is defined as the x-carriage which homes to the minimum endstop;
   // the second x-carriage always homes to the maximum endstop.
-  #define X2_MIN_POS 80     // set minimum to ensure second x-carriage doesn't hit the parked first X-carriage
-  #define X2_MAX_POS 353    // set maximum to the distance between toolheads when both heads are homed
+  #define X2_MIN_POS 25     // set minimum to ensure second x-carriage doesn't hit the parked first X-carriage
+  #define X2_MAX_POS 195    // set maximum to the distance between toolheads when both heads are homed
   #define X2_HOME_DIR 1     // the second X-carriage always homes to the maximum endstop position
   #define X2_HOME_POS X2_MAX_POS // default home position is the maximum carriage position
       // However: In this mode the HOTEND_OFFSET_X value for the second extruder provides a software
@@ -302,7 +302,7 @@
   //                           once. (2nd extruder x offset and temp offset are set using: M605 S2 [Xnnn] [Rmmm])
 
   // This is the default power-up mode which can be later using M605.
-  #define DEFAULT_DUAL_X_CARRIAGE_MODE 0
+  #define DEFAULT_DUAL_X_CARRIAGE_MODE 1
 
   // Default settings in "Auto-park Mode"
   #define TOOLCHANGE_PARK_ZLIFT   0.2      // the distance to raise Z axis when parking an extruder
@@ -319,7 +319,7 @@
 #define X_HOME_BUMP_MM 5
 #define Y_HOME_BUMP_MM 5
 #define Z_HOME_BUMP_MM 2
-#define HOMING_BUMP_DIVISOR {2, 2, 4}  // Re-Bump Speed Divisor (Divides the Homing Feedrate)
+#define HOMING_BUMP_DIVISOR {10, 10, 4}  // Re-Bump Speed Divisor (Divides the Homing Feedrate)
 //#define QUICK_HOME  //if this is defined, if both x and y are to be homed, a diagonal move will be performed initially.
 
 // When G28 is called, this option will make Y home before X
@@ -474,7 +474,7 @@
 // Babystepping enables the user to control the axis in tiny amounts, independently from the normal printing process
 // it can e.g. be used to change z-positions in the print startup phase in real-time
 // does not respect endstops!
-//#define BABYSTEPPING
+#define BABYSTEPPING
 #if ENABLED(BABYSTEPPING)
   #define BABYSTEP_XY  //not only z, but also XY in the menu. more clutter, more functions
                        //not implemented for deltabots!
@@ -494,8 +494,9 @@
 //#define ADVANCE
 
 #if ENABLED(ADVANCE)
-  #define EXTRUDER_ADVANCE_K .0
-  #define D_FILAMENT 2.85
+  #define EXTRUDER_ADVANCE_K .03
+  #define D_FILAMENT 1.7
+  //#define STEPS_MM_E 836
 #endif
 
 // Implementation of a linear pressure control
@@ -585,16 +586,16 @@ const unsigned int dropsegments = 5; //everything with less than this number of 
 // until then, intended retractions can be detected by moves that only extrude and the direction.
 // the moves are than replaced by the firmware controlled ones.
 
-//#define FWRETRACT  //ONLY PARTIALLY TESTED
+#define FWRETRACT
 #if ENABLED(FWRETRACT)
   #define MIN_RETRACT 0.1                //minimum extruded mm to accept a automatic gcode retraction attempt
-  #define RETRACT_LENGTH 3               //default retract length (positive mm)
+  #define RETRACT_LENGTH 0.5               //default retract length (positive mm)
   #define RETRACT_LENGTH_SWAP 13         //default swap retract length (positive mm), for extruder change
-  #define RETRACT_FEEDRATE 45            //default feedrate for retracting (mm/s)
-  #define RETRACT_ZLIFT 0                //default retract Z-lift
-  #define RETRACT_RECOVER_LENGTH 0       //default additional recover length (mm, added to retract length when recovering)
+  #define RETRACT_FEEDRATE 40            //default feedrate for retracting (mm/s)
+  #define RETRACT_ZLIFT 0.0                //default retract Z-lift
+  #define RETRACT_RECOVER_LENGTH 0.0       //default additional recover length (mm, added to retract length when recovering)
   #define RETRACT_RECOVER_LENGTH_SWAP 0  //default additional swap recover length (mm, added to retract length when recovering from extruder change)
-  #define RETRACT_RECOVER_FEEDRATE 8     //default feedrate for recovering from retraction (mm/s)
+  #define RETRACT_RECOVER_FEEDRATE 20     //default feedrate for recovering from retraction (mm/s)
 #endif
 
 // Add support for experimental filament exchange support M600; requires display
