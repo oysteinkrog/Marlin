@@ -994,9 +994,9 @@ void Temperature::init() {
   #endif
 
   #if HAS_FAN0
-    SET_OUTPUT(FAN_PIN);
+    SET_OUTPUT(FAN0_PIN);
     #if ENABLED(FAST_PWM_FAN)
-      setPwmFrequency(FAN_PIN, 1); // No prescaling. Pwm frequency = F_CPU/256/8
+      setPwmFrequency(FAN0_PIN, 1); // No prescaling. Pwm frequency = F_CPU/256/8
     #endif
   #endif
 
@@ -1625,7 +1625,7 @@ void Temperature::isr() {
       #if ENABLED(FAN_SOFT_PWM)
         #if HAS_FAN0
           soft_pwm_fan[0] = (soft_pwm_fan[0] & pwm_mask) + fanSpeedSoftPwm[0] >> 1;
-          WRITE_FAN(soft_pwm_fan[0] > pwm_mask ? HIGH : LOW);
+          WRITE_FAN0(soft_pwm_fan[0] > pwm_mask ? HIGH : LOW);
         #endif
         #if HAS_FAN1
           soft_pwm_fan[1] = (soft_pwm_fan[1] & pwm_mask) + fanSpeedSoftPwm[1] >> 1;
@@ -1658,7 +1658,7 @@ void Temperature::isr() {
 
       #if ENABLED(FAN_SOFT_PWM)
         #if HAS_FAN0
-          if (soft_pwm_fan[0] <= pwm_count_tmp) WRITE_FAN(0);
+          if (soft_pwm_fan[0] <= pwm_count_tmp) WRITE_FAN0(0);
         #endif
         #if HAS_FAN1
           if (soft_pwm_fan[1] <= pwm_count_tmp) WRITE_FAN1(0);
@@ -1761,7 +1761,7 @@ void Temperature::isr() {
         pwm_count_tmp = 0;
         #if HAS_FAN0
           soft_pwm_fan[0] = fanSpeedSoftPwm[0] >> 1;
-          WRITE_FAN(soft_pwm_fan[0] > 0 ? HIGH : LOW);
+          WRITE_FAN0(soft_pwm_fan[0] > 0 ? HIGH : LOW);
         #endif
         #if HAS_FAN1
           soft_pwm_fan[1] = fanSpeedSoftPwm[1] >> 1;
@@ -1773,7 +1773,7 @@ void Temperature::isr() {
         #endif
       }
       #if HAS_FAN0
-        if (soft_pwm_fan[0] <= pwm_count_tmp) WRITE_FAN(0);
+        if (soft_pwm_fan[0] <= pwm_count_tmp) WRITE_FAN0(0);
       #endif
       #if HAS_FAN1
         if (soft_pwm_fan[1] <= pwm_count_tmp) WRITE_FAN1(0);

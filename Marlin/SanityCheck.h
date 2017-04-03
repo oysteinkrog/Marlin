@@ -755,20 +755,37 @@ static_assert(1 >= 0
  */
 #if HAS_AUTO_FAN
   #if HAS_FAN0
-    #if E0_AUTO_FAN_PIN == FAN_PIN
-      #error "You cannot set E0_AUTO_FAN_PIN equal to FAN_PIN."
-    #elif E1_AUTO_FAN_PIN == FAN_PIN
-      #error "You cannot set E1_AUTO_FAN_PIN equal to FAN_PIN."
-    #elif E2_AUTO_FAN_PIN == FAN_PIN
-      #error "You cannot set E2_AUTO_FAN_PIN equal to FAN_PIN."
-    #elif E3_AUTO_FAN_PIN == FAN_PIN
-      #error "You cannot set E3_AUTO_FAN_PIN equal to FAN_PIN."
+    #if E0_AUTO_FAN_PIN == FAN0_PIN
+      #error "You cannot set E0_AUTO_FAN_PIN equal to FAN0_PIN."
+    #elif E1_AUTO_FAN_PIN == FAN0_PIN
+      #error "You cannot set E1_AUTO_FAN_PIN equal to FAN0_PIN."
+    #elif E2_AUTO_FAN_PIN == FAN0_PIN
+      #error "You cannot set E2_AUTO_FAN_PIN equal to FAN0_PIN."
+    #elif E3_AUTO_FAN_PIN == FAN0_PIN
+      #error "You cannot set E3_AUTO_FAN_PIN equal to FAN0_PIN."
+    #endif
+  #endif
+  #if HAS_FAN1
+    #if E0_AUTO_FAN_PIN == FAN1_PIN
+      #error "You cannot set E0_AUTO_FAN_PIN equal to FAN1_PIN."
+    #elif E1_AUTO_FAN_PIN == FAN1_PIN
+      #error "You cannot set E1_AUTO_FAN_PIN equal to FAN1_PIN."
+    #elif E2_AUTO_FAN_PIN == FAN1_PIN
+      #error "You cannot set E2_AUTO_FAN_PIN equal to FAN1_PIN."
+    #elif E3_AUTO_FAN_PIN == FAN1_PIN
+      #error "You cannot set E3_AUTO_FAN_PIN equal to FAN1_PIN."
     #endif
   #endif
 #endif
 
-#if HAS_FAN0 && CONTROLLER_FAN_PIN == FAN_PIN
-  #error "You cannot set CONTROLLER_FAN_PIN equal to FAN_PIN."
+#if HAS_FAN0 && CONTROLLER_FAN_PIN == FAN0_PIN
+  #error "You cannot set CONTROLLER_FAN_PIN equal to FAN0_PIN."
+#endif
+#if HAS_FAN1 && CONTROLLERFAN_PIN == FAN1_PIN
+  #error "You cannot set CONTROLLERFAN_PIN equal to FAN1_PIN."
+#endif
+#if FAN_COUNT < 2
+  #error FAN_COUNT
 #endif
 
 #if ENABLED(USE_CONTROLLER_FAN)
