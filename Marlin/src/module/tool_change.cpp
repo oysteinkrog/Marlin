@@ -746,6 +746,12 @@ inline void fast_line_to_current(const AxisEnum fr_axis) { _line_to_current(fr_a
       planner.synchronize();
     }
 
+          // activate new fan
+          fanSpeeds[tmp_extruder] = fanSpeeds[active_extruder];
+
+          // deactive old fan
+          fanSpeeds[active_extruder] = 0;
+
     // Activate the new extruder ahead of calling set_axis_is_at_home!
     active_extruder = new_tool;
 
