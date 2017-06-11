@@ -27,6 +27,7 @@
 #include "../gcode.h"
 #include "../../module/motion.h"
 #include "../../module/temperature.h"
+#include "../../module/motion.h"
 
 #if PREHEAT_COUNT
   #include "../../lcd/marlinui.h"
@@ -55,7 +56,8 @@
  *           3-255 = Set the speed for use with T2
  */
 void GcodeSuite::M106() {
-  const uint8_t pfan = parser.byteval('P', _ALT_P);
+  const uint8_t pfan = parser.byteval('P', active_extruder);
+  const uint16_t s = parser.ushortval('S', 255);
 
   if (pfan < _CNT_P) {
 
