@@ -27,6 +27,7 @@
 #include "../gcode.h"
 #include "../../module/motion.h"
 #include "../../module/temperature.h"
+#include "../../module/motion.h"
 
 #if ENABLED(SINGLENOZZLE)
   #define _ALT_P active_extruder
@@ -50,7 +51,8 @@
  *           3-255 = Set the speed for use with T2
  */
 void GcodeSuite::M106() {
-  const uint8_t p = parser.byteval('P', _ALT_P);
+  const uint8_t p = parser.byteval('P', active_extruder);
+  const uint16_t s = parser.ushortval('S', 255);
 
   if (p < _CNT_P) {
 
