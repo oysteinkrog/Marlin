@@ -6632,7 +6632,7 @@ inline void gcode_M105() {
    */
   inline void gcode_M106() {
     uint16_t s = code_seen('S') ? code_value_ushort() : 255,
-             p = code_seen('P') ? code_value_ushort() : 0;
+             p = code_seen('P') ? code_value_ushort() : active_extruder;
     NOMORE(s, 255);
     if (p < FAN_COUNT) fanSpeeds[p] = s;
   }
