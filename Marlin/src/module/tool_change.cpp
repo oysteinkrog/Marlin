@@ -616,6 +616,12 @@ inline void invalid_extruder_error(const uint8_t e) {
       planner.synchronize();
     }
 
+          // activate new fan
+          fanSpeeds[tmp_extruder] = fanSpeeds[active_extruder];
+
+          // deactive old fan
+          fanSpeeds[active_extruder] = 0;
+
     // Activate the new extruder ahead of calling set_axis_is_at_home!
     active_extruder = tmp_extruder;
 
