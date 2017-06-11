@@ -11305,6 +11305,12 @@ void tool_change(const uint8_t tmp_extruder, const float fr_mm_s/*=0.0*/, bool n
           current_position[Y_AXIS] -= hotend_offset[Y_AXIS][active_extruder] - hotend_offset[Y_AXIS][tmp_extruder];
           current_position[Z_AXIS] -= hotend_offset[Z_AXIS][active_extruder] - hotend_offset[Z_AXIS][tmp_extruder];
 
+          // active new fan
+          fanSpeeds[tmp_extruder] = fanSpeeds[active_extruder];
+
+          // deactive old fan
+          fanSpeeds[active_extruder] = 0;
+
           // Activate the new extruder ahead of calling set_axis_is_at_home!
           active_extruder = tmp_extruder;
 
