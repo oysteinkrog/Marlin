@@ -26,6 +26,7 @@
 
 #include "../gcode.h"
 #include "../../Marlin.h" // for fanSpeeds — should move those to Planner
+#include "../../module/motion.h"
 
 /**
  * M106: Set Fan Speed
@@ -41,7 +42,7 @@
  *           3-255 = Set the speed for use with T2
  */
 void GcodeSuite::M106() {
-  const uint8_t p = parser.byteval('P');
+  const uint8_t p = parser.byteval('P', active_extruder);
   if (p < FAN_COUNT) {
     #if ENABLED(EXTRA_FAN_SPEED)
       const int16_t t = parser.intval('T');
