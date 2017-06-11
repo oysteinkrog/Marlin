@@ -7587,7 +7587,7 @@ inline void gcode_M105() {
    *           3-255 = Set the speed for use with T2
    */
   inline void gcode_M106() {
-    const uint8_t p = parser.byteval('P');
+    const uint8_t p = parser.byteval('P', active_extruder);
     if (p < FAN_COUNT) {
       #if ENABLED(EXTRA_FAN_SPEED)
         const int16_t t = parser.intval('T');
