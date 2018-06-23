@@ -124,7 +124,7 @@
  *
  * :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000]
  */
-#define BAUDRATE 115200
+#define BAUDRATE 250000
 
 // Enable the Bluetooth serial interface on AT90USB devices
 //#define BLUETOOTH
@@ -493,11 +493,15 @@
 // Found using autotune:  M303 E0 S200 C8
 // With E3D V6, both fans on, insulation on heater block
 // 2016-01-15
+//#define DEFAULT_Kp 13.22
+//#define DEFAULT_Ki 0.65
+//#define DEFAULT_Kd 66.86
 
-#define DEFAULT_Kp 13.22
-#define DEFAULT_Ki 0.65
-#define DEFAULT_Kd 66.86
-
+// Found using autotune:  M303 E0 S220 C10 U
+// 24V
+#define DEFAULT_Kp 9.23
+#define DEFAULT_Ki 0.35
+#define DEFAULT_Kd 60.88
 #endif // PIDTEMP
 
 //===========================================================================
@@ -551,9 +555,22 @@
     //#define  DEFAULT_bedKd 235.18
 
 // M303 E-1 S70 C8
-#define  DEFAULT_bedKp 228.90
-#define  DEFAULT_bedKi 44.78
-#define  DEFAULT_bedKd 292.51
+// MK52 24V
+//#define DEFAULT_bedKp 127.30
+//#define DEFAULT_bedKi 8.22
+//#define DEFAULT_bedKd 492.75
+
+// MK52 24V@30V
+//#define DEFAULT_bedKp 33.25
+//#define DEFAULT_bedKi 1.87
+//#define DEFAULT_bedKd 147.78
+
+// M303 E-1 C8 S70 U
+// MK52 24V
+#define DEFAULT_bedKp 106.08
+#define DEFAULT_bedKi 6.82
+#define DEFAULT_bedKd 412.79
+
 #endif // PIDTEMPBED
 
 // @section extruder
@@ -623,7 +640,7 @@
 #define USE_XMIN_PLUG
 #define USE_YMIN_PLUG
 #define USE_ZMIN_PLUG
-#define USE_XMAX_PLUG
+//#define USE_XMAX_PLUG
 //#define USE_YMAX_PLUG
 //#define USE_ZMAX_PLUG
 
@@ -979,7 +996,7 @@
 #define Z_PROBE_OFFSET_FROM_EXTRUDER 0  // Z offset: -below +above  [the nozzle] // Make more negative for more squish
 
 // Certain types of probes need to stay away from edges
-#define MIN_PROBE_EDGE 10
+#define MIN_PROBE_EDGE 0
 
 // X and Y axis travel speed (mm/m) between probes
 #define XY_PROBE_SPEED (300*60)         // X and Y axis travel speed between probes, in mm/min
@@ -1075,11 +1092,11 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR false
-#define INVERT_E1_DIR false
-#define INVERT_E2_DIR false
-#define INVERT_E3_DIR false
-#define INVERT_E4_DIR false
+#define INVERT_E0_DIR true
+#define INVERT_E1_DIR true
+#define INVERT_E2_DIR true
+#define INVERT_E3_DIR true
+#define INVERT_E4_DIR true
 #define INVERT_E5_DIR false
 
 // @section homing
@@ -1101,11 +1118,11 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 214
-#define Y_BED_SIZE 214
+#define X_BED_SIZE 240
+#define Y_BED_SIZE 210
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-#define X_MIN_POS -62
+#define X_MIN_POS -40
 //#define X_MIN_POS 0
 #define Y_MIN_POS -41
 #define Z_MIN_POS 0
@@ -1246,7 +1263,7 @@
   /**
    * Enable the G26 Mesh Validation Pattern tool.
    */
-  //#define G26_MESH_VALIDATION
+  #define G26_MESH_VALIDATION
   #if ENABLED(G26_MESH_VALIDATION)
     #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
     #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for the G26 Mesh Validation Tool.
