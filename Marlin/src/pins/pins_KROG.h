@@ -1,6 +1,7 @@
 //#define IS_RAMPS_EEB
 
-#include "pins_MKS_BASE.h"
+//#include "pins_MKS_BASE.h"
+#include "pins_RURAMPS4D_13.h"
 
 //#define X2_STEP_PIN   64
 //#define X2_DIR_PIN    59
@@ -32,18 +33,20 @@
 //#define HEATER_0_PIN   RAMPS_D9_PIN
 //#define HEATER_1_PIN   RAMPS_D10_PIN
 
-//#undef FAN_PIN
+#undef FAN_PIN
 //#define FAN_PIN             RAMPS_D9_PIN
 //#define FAN_PIN            65
-#define FAN1_PIN            57
+#define FAN1_PIN            9
+#define FAN2_PIN            8
+#define CONTROLLER_FAN_PIN            44
 
 // pt100
 //#define TEMP_0_PIN         4   // Analog Input
 
 // thermistors
-#define TEMP_0_PIN         13   // Analog Input
-#define TEMP_1_PIN         14   // Analog Input
-#define TEMP_BED_PIN       15   // Analog Input
+//#define TEMP_0_PIN         13   // Analog Input
+//#define TEMP_1_PIN         14   // Analog Input
+//#define TEMP_BED_PIN       15   // Analog Input
 
 //#define SERVO0_PIN         42
 //#if NUM_SERVOS > 1
