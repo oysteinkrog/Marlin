@@ -28,6 +28,8 @@
 //#define X2_DIR_PIN          61
 //#define X2_ENABLE_PIN       56
 //#define X2_CS_PIN           49
+//
+#define X_SERIAL_RX 61
 
 //#define HEATER_BED_PIN RAMPS_D8_PIN
 //#define HEATER_0_PIN   RAMPS_D9_PIN
