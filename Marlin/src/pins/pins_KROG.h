@@ -1,7 +1,7 @@
 //#define IS_RAMPS_EEB
 
-//#include "pins_MKS_BASE.h"
-#include "pins_RURAMPS4D_13.h"
+#include "pins_RAMPS.h"
+//#include "pins_RURAMPS4D_13.h"
 
 //#define X2_STEP_PIN   64
 //#define X2_DIR_PIN    59
@@ -29,7 +29,7 @@
 //#define X2_ENABLE_PIN       56
 //#define X2_CS_PIN           49
 //
-#define X_SERIAL_RX 61
+//#define X_SERIAL_RX 61
 
 //#define HEATER_BED_PIN RAMPS_D8_PIN
 //#define HEATER_0_PIN   RAMPS_D9_PIN

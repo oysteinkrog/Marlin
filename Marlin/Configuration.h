@@ -695,7 +695,7 @@
  *          TMC5160, TMC5160_STANDALONE
  * :['A4988', 'A5984', 'DRV8825', 'LV8729', 'L6470', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2160', 'TMC2160_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE', 'TMC5160', 'TMC5160_STANDALONE']
  */
-#define X_DRIVER_TYPE  TMC2208
+#define X_DRIVER_TYPE  TMC2100
 #define Y_DRIVER_TYPE  TMC2100
 #define Z_DRIVER_TYPE  TMC2100
 #define X2_DRIVER_TYPE TMC2100
@@ -751,31 +751,10 @@
 #define DRIVER_MICROSTEPS_AXIS_Z 16
 #define DRIVER_MICROSTEPS_AXIS_E 16
 
-// T2 belts
-#define BELT_PITCH_X 2.0
-#define BELT_PITCH_Y 2.0
-
-// 20-tooth pulleys
-#define PULLEY_TEETH_X 20.0
-#define PULLEY_TEETH_Y 20.0
-
-// XY STEFPS
-// steps_per_mm = (motor_steps_per_rev * driver_microstep) / (belt_pitch * pulley_number_of_teeth)
-// NEMA 17 motor with T2 belt and 20-tooth pulley:
-// (200 * 16) / (2 * 20) = 80.0
-#define DEFAULT_X_STEPS ((MOTOR_STEPS_PER_REV_AXIS_X*DRIVER_MICROSTEPS_AXIS_X) / (BELT_PITCH_X*PULLEY_TEETH_X))
-#define DEFAULT_Y_STEPS ((MOTOR_STEPS_PER_REV_AXIS_Y*DRIVER_MICROSTEPS_AXIS_Y) / (BELT_PITCH_X*PULLEY_TEETH_Y))
-
-// Z STEPS
-// steps_per_mm = (motor_steps_per_rev * driver_microstep) / thread_pitch
-// NEMA 17 with standard pitch M5 threaded rod:
-// (200 * 16) / 0.8 = 4000
-
-// M5 rod
-//#define Z_THREAD_PITCH 0.8
-// TR8x8 (P2) lead screw
-#define Z_THREAD_PITCH 8.0
-#define DEFAULT_Z_STEPS ((MOTOR_STEPS_PER_REV_AXIS_Z*DRIVER_MICROSTEPS_AXIS_Z) / (Z_THREAD_PITCH))
+// gear ratio 5
+#define DEFAULT_X_STEPS (MOTOR_STEPS_PER_REV_AXIS_X*DRIVER_MICROSTEPS_AXIS_X) * 5
+#define DEFAULT_Y_STEPS (MOTOR_STEPS_PER_REV_AXIS_Y*DRIVER_MICROSTEPS_AXIS_Y)
+#define DEFAULT_Z_STEPS (MOTOR_STEPS_PER_REV_AXIS_Z*DRIVER_MICROSTEPS_AXIS_Z)
 
 // E STEPS
 // e_steps_per_mm = (motor_steps_per_rev * driver_microstep) * (big_gear_teeth / small_gear_teeth) / (hob_effective_diameter * pi)
@@ -818,7 +797,7 @@
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4[, E5]]]]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 30, 50, 50 }
+#define DEFAULT_MAX_FEEDRATE          { 10, 10, 10, 10, 10 }
 
 /**
  * Default Max Acceleration (change/s) change = mm/s
@@ -826,7 +805,7 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4[, E5]]]]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 5000, 5000, 3000, 5000, 5000 }
+#define DEFAULT_MAX_ACCELERATION      { 50, 50, 50, 500, 500 }
 
 /**
  * Default Acceleration (change/s) change = mm/s
@@ -836,9 +815,9 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          3000    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          50    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  50    // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   50    // X, Y, Z acceleration for travel (non printing) moves
 
 //
 // Use Junction Deviation instead of traditional Jerk Limiting
