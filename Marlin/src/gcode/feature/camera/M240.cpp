@@ -152,9 +152,9 @@ void GcodeSuite::M240() {
 
   #elif HAS_PHOTOGRAPH
 
-    spin_photo_pin();
-    delay(7.33);
-    spin_photo_pin();
+    WRITE(PHOTOGRAPH_PIN, HIGH);
+    _delay_ms(300);
+    WRITE(PHOTOGRAPH_PIN, LOW);
 
   #endif
 
