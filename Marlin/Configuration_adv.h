@@ -426,9 +426,9 @@
  */
 #define E0_AUTO_FAN_PIN   4
 #define E1_AUTO_FAN_PIN   5
-#define E2_AUTO_FAN_PIN   5
-#define E3_AUTO_FAN_PIN   5
-#define E4_AUTO_FAN_PIN   5
+#define E2_AUTO_FAN_PIN  -1
+#define E3_AUTO_FAN_PIN  -1
+#define E4_AUTO_FAN_PIN  -1
 #define E5_AUTO_FAN_PIN -1
 #define E6_AUTO_FAN_PIN -1
 #define E7_AUTO_FAN_PIN -1

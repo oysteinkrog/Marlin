@@ -31,16 +31,19 @@
 //
 //#define X_SERIAL_RX 59
 
-//#define HEATER_BED_PIN RAMPS_D8_PIN
-//#define HEATER_0_PIN   RAMPS_D9_PIN
-//#define HEATER_1_PIN   RAMPS_D10_PIN
+#undef HEATER_BED_PIN
+#define HEATER_BED_PIN RAMPS_D8_PIN
+#undef HEATER_0_PIN
+#define HEATER_0_PIN   RAMPS_D10_PIN
+#undef HEATER_1_PIN
+#define HEATER_1_PIN   7
 
-//#undef FAN_PIN
-//#define FAN_PIN             4
+#undef FAN_PIN
+#define FAN_PIN             RAMPS_D9_PIN
 //#define FAN_PIN            65
 //#define FAN1_PIN            9
 //#define FAN2_PIN            8
-#define CONTROLLER_FAN_PIN            4
+//#define CONTROLLER_FAN_PIN            6
 
 // pt100
 //#define TEMP_0_PIN         4   // Analog Input
