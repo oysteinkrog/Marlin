@@ -1086,7 +1086,7 @@
 // X offset: -left  +right  [of the nozzle]
 // Y offset: -front +behind [the nozzle]
 // Z offset: -below +above  [the nozzle] // Make more negative for more squish
-#define NOZZLE_TO_PROBE_OFFSET { 27, 13, 0 }
+#define NOZZLE_TO_PROBE_OFFSET { 16, 20.5, 0 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1225,7 +1225,7 @@
 #define Y_BED_SIZE 212.5
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-#define X_MIN_POS -45
+#define X_MIN_POS -49
 //#define X_MIN_POS 0
 #define Y_MIN_POS -41
 #define Z_MIN_POS 0
@@ -1806,7 +1806,7 @@
  * you must uncomment the following option or it won't work.
  *
  */
-#define SDSUPPORT
+//#define SDSUPPORT
 
 /**
  * SD CARD: SPI SPEED
@@ -1823,7 +1823,7 @@
  *
  * Use CRC checks and retries on the SD communication.
  */
-#define SD_CHECK_AND_RETRY
+//#define SD_CHECK_AND_RETRY
 
 /**
  * LCD Menu Items
