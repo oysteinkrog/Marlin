@@ -127,9 +127,9 @@
 //#define BLUETOOTH
 
 // Choose the name from boards.h that matches your setup
-#ifndef MOTHERBOARD
+//#ifndef MOTHERBOARD
   #define MOTHERBOARD RURAMPS4D_13
-#endif
+//#enduf
 
 // Name displayed in the LCD "Ready" message and Info menu
 #define CUSTOM_MACHINE_NAME "KMax 1"
