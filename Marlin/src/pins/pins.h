@@ -734,7 +734,12 @@
   #elif MB(RAMPS_LONGER3D_LK4PRO)
     #error "BOARD_RAMPS_LONGER3D_LK4PRO is now BOARD_LONGER3D_LKx_PRO. Please update your configuration."
   #else
-    #error "Unknown MOTHERBOARD value set in Configuration.h"
+  #include "sam/pins_RURAMPS4D_13.h"            // SAM3X8E                                env:DUE env:DUE_USB env:DUE_debug
+//#define XSTR(x) STR(x)
+//#define STR(x) #x
+//#pragma message "arst: " XSTR(MOTHERBOARD)
+    //#error #MOTHERBOARD
+    //#error "Unknown MOTHERBOARD value set in Configuration.h"
   #endif
 
   #undef BOARD_MKS_13
